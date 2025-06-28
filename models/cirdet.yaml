@@ -1,0 +1,64 @@
+# YOLOv5 🚀 by Ultralytics, AGPL-3.0 license
+
+# Parameters
+nc: 8  # number of classes
+depth_multiple: 1.0  # model depth multiple
+width_multiple: 1.0  # layer channel multiple
+anchors:
+  - [10,13, 16,30, 33,23]  # P3/8
+  - [30,61, 62,45, 59,119]  # P4/16
+  - [116,90, 156,198, 373,326]  # P5/32
+
+# YOLOv5 v6.0 backbone
+backbone:
+  # [from, number, module, args]
+  [ # stream rgb
+   [-1, 1, Conv, [64, 6, 2, 2]],   # 0-P1/2
+   [-1, 1, Conv, [128, 3, 2]],     # 1-P2/4
+   [-1, 3, C3, [128]],             # 2-p2/4
+   [-1, 1, Conv, [256, 3, 2]],     # 3-P3/8
+   [-1, 6, C3, [256]],             # 4-p3/8   128
+   [-1, 1, Conv, [512, 3, 2]],     # 5-P4/16
+   [-1, 9, C3, [512]],             # 6-p4/16  63
+   [-1, 1, Conv, [1024, 3, 2]],    # 7-P5/32
+   [-1, 3, C3, [1024]],            # 8-p5/32
+   [-1, 1, SPPF, [1024, 5]],       # 9-p5/32  32
+    # stream ir
+   [-9, 1, Conv, [64, 6, 2, 2]],   # 10-P1/2
+   [-1, 1, Conv, [128, 3, 2]],     # 11-P2/4
+   [-1, 3, C3, [128]],             # 12-p2/4
+   [-1, 1, Conv, [256, 3, 2]],     # 13-P3/8
+   [-1, 6, C3, [256]],             # 14-p3/8  128
+   [-1, 1, Conv, [512, 3, 2]],     # 15-P4/16
+   [-1, 9, C3, [512]],             # 16-p4/16 63
+   [-1, 1, Conv, [1024, 3, 2]],    # 17-P5/32
+   [-1, 3, C3, [1024]],            # 18-p5/32
+   [-1, 1, SPPF, [1024, 5]],       # 19-p5/32 32
+    # my block
+   [[4,14], 1, MyDecoup, [256]],   # 20-p3/8
+   [[6,16], 1, MyDecoup, [256]],   # 21-p4/16
+   [[9,19], 1, MyDecoup, [256]],  # 22-p5/32
+  ]
+  
+head:
+  [[-1, 1, Conv, [256, 1, 1]],     # 23
+   [-1, 1, nn.Upsample, [None, 2, 'nearest']], # 24
+   [[-1, 21], 1, Concat, [1]],     # 25 cat backbone P4  
+   [-1, 3, C3, [256, False]],      # 26                [1024 - 256]
+
+   [-1, 1, Conv, [256, 1, 1]],     # 27
+   [-1, 1, nn.Upsample, [None, 2, 'nearest']], # 28
+   [[-1, 20], 1, Concat, [1]],     # 29 cat backbone P3   
+   [-1, 3, C3, [256, False]],      # 30 (P3/8-small)   [512 - 128]
+
+   [-1, 1, Conv, [256, 3, 2]],     
+   [[-1, 27], 1, Concat, [1]],     # cat head P4
+   [-1, 3, C3, [256, False]],      # 33 (P4/16-medium)     [512 - 256]
+
+   [-1, 1, Conv, [256, 3, 2]],
+   [[-1, 23], 1, Concat, [1]],     # cat head P5
+   [-1, 3, C3, [256, False]],     # 36 (P5/32-large)     [1024 - 512]
+
+   [[30, 33, 36], 1, Detect, [nc, anchors]],  # Detect(P3, P4, P5)
+  ]
+
