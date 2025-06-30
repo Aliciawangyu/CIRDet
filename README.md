@@ -1,4 +1,6 @@
-## TCSVT2025 - Confidence-driven Unimodal Interference Removal for Enhanced Multimodal Object Detection (CIRDet)
+# TCSVT2025 - Confidence-driven Unimodal Interference Removal for Enhanced Multimodal Object Detection (CIRDet)
+
+Paper Links: [*TCSVT Early Access*](https://ieeexplore.ieee.org/xpl/tocresult.jsp?isnumber=4358651&sortType=vol-only-newest&searchWithin=Confidence-driven)
 
   ## Requirements
 
