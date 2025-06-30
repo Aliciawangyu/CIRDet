@@ -23,7 +23,7 @@ cd CIRDet
 pip install -r requirements.txt
 ```
 
-  ## Reproducing results
+  ## Dataset and pretrained model
 
 1. Dataset preparation
 
@@ -39,7 +39,7 @@ pip install -r requirements.txt
 
    yolov5 weights (pre-train)
 
-   -[yolov5l] []
+   -[yolov5l] [xunlei](https://pan.xunlei.com/s/VOTzO_qWJMhaCe7z_SV0BbxJA1?pwd=f3nf)
 
    CIRDet weights
 
@@ -49,5 +49,16 @@ pip install -r requirements.txt
 
    -[VEDAI] [xunlei](https://pan.xunlei.com/s/VOTpL3QrvkmlrY_kRTMfRIzwA1?pwd=x8ax)
 
-3. Evaluate the model
+  ## Training and Evaluation
+  
+1. Training script.
+```
+cd script/train
+sh FLIR.sh
+```
+2. Evaluation script.
+```
+cd script/val
+sh FLIR.sh
+```
 
