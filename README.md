@@ -107,3 +107,6 @@ cd script/val
 sh FLIR.sh
 ```
 
+## Thanks to the Third Party Libs
+https://docs.ultralytics.com/zh/yolov5/
+
