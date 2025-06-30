@@ -3,7 +3,10 @@
 Paper Links: [*TCSVT Early Access*](https://ieeexplore.ieee.org/xpl/tocresult.jsp?isnumber=4358651&sortType=vol-only-newest&searchWithin=Confidence-driven)
 
 ## Introduction
-![Motivation of CIRDet](https://github.com/Aliciawangyu/CIRDet/blob/main/img/Motivation.pdf)
+
+**Motivation of CIRDet**
+
+![image](https://github.com/Aliciawangyu/CIRDet/blob/main/img/Motivation.pdf)
 
 Infrared and visible modalities exhibit different levels of confidence under various conditions. Crossmodal cooperation is effective only when both modalities maintain the same confidence level and convey similar semantic information (e.g., “car”). We refer to these as consensus features. However, in scenarios where one modality is inferior, the descriptions of the same object may diverge (e.g., “pedestrian”), leading to conflict features. Aggregating information without considering the effectiveness of each modality may introduce noise and diminish the contribution of the superior modality.
 
