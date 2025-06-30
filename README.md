@@ -22,7 +22,8 @@ Infrared and visible modalities exhibit different levels of confidence under var
 Overview of the proposed CIRDet for object detection. The input images are first processed by two-stream encoders to extract feature maps at three different scales. Then, UPD is used to explicitly decompose each modal features into two parts: consensus features, which are constrained by KL divergence in ECF, and conflict features. Besides, ECF performs an equitable credibility fusion of the consensus features from both modalities. Finally, we employ GCA and LCA to evaluate the confidence levels of conflict features and remove the unreliable modal interference. The fused features from three different scales are then fed into the subsequent networks for detection.
 
 ## Results
-|Dataset|Backbone|mAP@0.5|mAP@0.75|mAP|
+
+|Dataset|mAP@0.5|mAP@0.75|mAP|
 |:---------:|:-----:|:-----------------:|:-------------:|
 |FLIR|81.2(-1.0)|45.5(+8.1)|46.5(+4.2)|
 |VEDAI|86.5(+1.2)|70.9(+5.0)|59.1(+3.1)|
