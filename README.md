@@ -2,7 +2,7 @@
 
 Paper Links: [*[CIRDet]*](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=11029233)
 
-## Introduction
+## 📝Introduction
 
 **Motivation of CIRDet**
 
@@ -12,7 +12,7 @@ Paper Links: [*[CIRDet]*](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumb
 
 Infrared and visible modalities exhibit different levels of confidence under various conditions. Crossmodal cooperation is effective only when both modalities maintain the same confidence level and convey similar semantic information (e.g., “car”). We refer to these as consensus features. However, in scenarios where one modality is inferior, the descriptions of the same object may diverge (e.g., “pedestrian”), leading to conflict features. Aggregating information without considering the effectiveness of each modality may introduce noise and diminish the contribution of the superior modality.
 
-## Architecture
+## 🌐Architecture
 **Overview of CIRDet**
 
 <div align="center">
@@ -21,7 +21,7 @@ Infrared and visible modalities exhibit different levels of confidence under var
 
 Overview of the proposed CIRDet for object detection. The input images are first processed by two-stream encoders to extract feature maps at three different scales. Then, UPD is used to explicitly decompose each modal features into two parts: consensus features, which are constrained by KL divergence in ECF, and conflict features. Besides, ECF performs an equitable credibility fusion of the consensus features from both modalities. Finally, we employ GCA and LCA to evaluate the confidence levels of conflict features and remove the unreliable modal interference. The fused features from three different scales are then fed into the subsequent networks for detection.
 
-## Results
+## 📈Results
 
 |Dataset|mAP@0.5|mAP@0.75|mAP|
 |:---------:|:-----:|:-----------------:|:-------------:|
@@ -29,7 +29,7 @@ Overview of the proposed CIRDet for object detection. The input images are first
 |VEDAI|86.5(+1.2)|70.9(+5.0)|59.1(+3.1)|
 |LLVIP|98.0(+0.5)|78.4(+5.2)|67.3(+3.4)|
 
-## Citation
+## 🔗Citation
 If you use this repo for your research, please cite our paper:
 ```
 @ARTICLE{11029233,
@@ -45,7 +45,7 @@ If you use this repo for your research, please cite our paper:
 
 ```
 
-## Requirements
+## 📚Requirements
 
 1. Set up the environment:
 
@@ -68,7 +68,7 @@ cd CIRDet
 pip install -r requirements.txt
 ```
 
-## Dataset and pretrained model
+## 📊Dataset and pretrained model
 
 1. Dataset preparation
 
@@ -94,7 +94,7 @@ pip install -r requirements.txt
 
    -[VEDAI] [xunlei](https://pan.xunlei.com/s/VOTpL3QrvkmlrY_kRTMfRIzwA1?pwd=x8ax)
 
-## Training and Evaluation
+## 📌Training and Evaluation
   
 1. Training script.
 ```
@@ -107,6 +107,6 @@ cd script/val
 sh FLIR.sh
 ```
 
-## Thanks to the Third Party Libs
+## ❤️Thanks to the Third Party Libs
 https://docs.ultralytics.com/zh/yolov5/
 
