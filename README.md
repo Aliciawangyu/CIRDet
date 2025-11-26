@@ -35,14 +35,13 @@ If you use this repo for your research, please cite our paper:
 @ARTICLE{11029233,
   author={Wang, Yu and Wei, Shikui and Xu, Sen and Qin, Ying and Zhao, Yao},
   journal={IEEE Transactions on Circuits and Systems for Video Technology}, 
-  title={Confidence-driven Unimodal Interference Removal for Enhanced Multimodal Object Detection}, 
+  title={Confidence-Driven Unimodal Interference Removal for Enhanced Multimodal Object Detection}, 
   year={2025},
-  volume={},
-  number={},
-  pages={1-1},
-  keywords={Feature extraction;Interference;Object detection;Visualization;Transformers;Noise;Streaming media;Detection algorithms;Training;Reliability;multi-modal fusion;multi-spectral object detection;unimodal interference;disentangled representation},
+  volume={35},
+  number={11},
+  pages={11041-11053},
+  keywords={Feature extraction;Interference;Object detection;Visualization;Transformers;Noise;Streaming media;Detection algorithms;Training;Reliability;Multi-modal fusion;multi-spectral object detection;unimodal interference;disentangled representation},
   doi={10.1109/TCSVT.2025.3578340}}
-
 ```
 
 ## 📚Requirements
