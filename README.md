@@ -94,7 +94,7 @@ pip install -r requirements.txt
 
    -[VEDAI] [xunlei](https://pan.xunlei.com/s/VOTpL3QrvkmlrY_kRTMfRIzwA1?pwd=x8ax)
 
-## 📌Training and Evaluation
+## 🚀Training and Evaluation
   
 1. Training script.
 ```
