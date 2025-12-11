@@ -271,17 +271,6 @@ def train(hyp, opt, device, callbacks):  # hyp is path/to/hyp.yaml or hyp dictio
                 f'Using {train_loader.num_workers * WORLD_SIZE} dataloader workers\n'
                 f"Logging results to {colorstr('bold', save_dir)}\n"
                 f'Starting training for {epochs} epochs...')
-    # # ============ wangyu设置热力图的保存路径 ============= #
-    # hotmap_basepath = opt.name
-    # hotmap_path = os.path.join('/amax/home/wangyu/yolov5_old/runs/train', hotmap_basepath, 'hotmap')
-    # # 检查文件夹是否存在，不存在则创建
-    # if not os.path.exists(hotmap_path):
-    #     os.makedirs(hotmap_path)
-    # expfeatures = [] # wangyu 取出期望的特征
-    # # ================================================== #
-
-    # 在训练循环开始处启用异常检测
-    # torch.autograd.set_detect_anomaly(True)
 
     for epoch in range(start_epoch, epochs):  # epoch ------------------------------------------------------------------
         callbacks.run('on_train_epoch_start')
@@ -335,10 +324,6 @@ def train(hyp, opt, device, callbacks):  # hyp is path/to/hyp.yaml or hyp dictio
             # Forward
             with torch.cuda.amp.autocast(amp):
                 pred, features = model(imgs, irs)  # forward # wangyu
-                # print("xxxxxxxxxxxxxxxxxxxxxx")
-                # print("pred:", pred[0].shape, pred[1].shape, pred[2].shape)
-                # print("features:", features[0][0].shape, features[1][0].shape, features[2][0].shape)
-                # features是三个尺度的特征图列表，每个列表里有四个特征图。
                 loss, loss_items = compute_loss(pred, features, targets.to(device), len(imgs))  # loss scaled by batch_size 
                 if RANK != -1:
                     loss *= WORLD_SIZE  # gradient averaged between devices in DDP mode
@@ -432,12 +417,6 @@ def train(hyp, opt, device, callbacks):  # hyp is path/to/hyp.yaml or hyp dictio
         if stop:
             break  # must break all DDP ranks
 
-        # end epoch ----------------------------------------------------------------------------------------------------
-    # end training -----------------------------------------------------------------------------------------------------
-    # =============== wangyu 特征图可视化 ============== #
-    # expfeatures.append(features)
-    # drawHotmap(hotmap_path, features)
-    # ================================================ #
     
     if RANK in {-1, 0}:
         LOGGER.info(f'\n{epoch - start_epoch + 1} epochs completed in {(time.time() - t0) / 3600:.3f} hours.')
