@@ -351,7 +351,7 @@ def parse_model_rgb_ir(d, ch):  # model_dict, input_channels(3)
             except:
                 pass
 
-        # 控制每种网络结构深度的核心代码
+        # core
         n = n_ = max(round(n * gd), 1) if n > 1 else n  # depth gain
 
         if m in [Conv, C3, SPPF, Bottleneck]:
